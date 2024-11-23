@@ -25,6 +25,11 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+*.DB_HOST
+*.DB_PORT
+*.DB_NAME
+*.DB_USER
+*.DB_PASSWORD
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

@@ -18,7 +18,9 @@ CREATE TABLE IF NOT EXISTS tasks (
 );
 
 select * from users;
-select title, user_id, id from tasks;
+SELECT * 
+FROM tasks 
+WHERE user_id = 1;
 select name = 'In Progress'  from status;
 select * from tasks;
 UPDATE tasks
@@ -33,8 +35,24 @@ WHERE u.id NOT IN (
 );
 INSERT INTO tasks (title, description, status_id, user_id)
 VALUES ('New task', 'This is a description for the new task', 1, 10);
-select * from tasks where status_id = '3';
-delete from tasks where id = '1';
+SELECT * 
+FROM tasks 
+WHERE status_id = (
+    SELECT id 
+    FROM status 
+    WHERE name = 'new'
+); -- changed
+delete from tasks where id = '1'; -- changed
+SELECT * 
+FROM tasks 
+WHERE status_id != (
+    SELECT id 
+    FROM status 
+    WHERE name = 'completed'
+); -- added
+SELECT * 
+FROM tasks 
+WHERE description IS NULL; -- added
 select email, id, fullname
 from users
 where email like '%wmeyer%'
